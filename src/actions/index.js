@@ -16,19 +16,15 @@ export const getHeadlinesFailure = (error) => ({
 
 export const makeApiCall = () => {
   return dispatch => {
-    console.log("reached 1")
     dispatch(requestHeadlines);
     return fetch(`https://api.nytimes.com/svc/topstories/v2/home.json?api-key=${process.env.REACT_APP_API_KEY}`)
       .then(response => response.json())
       .then(
         (jsonifiedResponse) => {
-          console.log("reached 2");
-          
           dispatch(getHeadlinesSuccess(jsonifiedResponse.results));
-          });
-        }
-        ,
-        (error) => {
-          dispatch(getHeadlinesFailure(error));
-        }
+        })
+      .catch((error) => {
+        dispatch(getHeadlinesFailure(error));
+      });
   }
+}

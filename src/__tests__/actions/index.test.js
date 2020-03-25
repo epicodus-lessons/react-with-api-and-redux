@@ -9,7 +9,7 @@ describe('headline reducer actions', () => {
   });
 
   it('getHeadlinesSuccess should create GET_HEADLINES_SUCCESS action', () => {
-    const headlines = [];
+    const headlines = "A headline";
     expect(actions.getHeadlinesSuccess(headlines)).toEqual({
       type: c.GET_HEADLINES_SUCCESS,
       headlines
@@ -17,7 +17,7 @@ describe('headline reducer actions', () => {
   });
 
   it('getHeadlinesFailure should create GET_HEADLINES_FAILURE action', () => {
-    const error = null;
+    const error = "An error";
     expect(actions.getHeadlinesFailure(error)).toEqual({
       type: c.GET_HEADLINES_FAILURE,
       error
